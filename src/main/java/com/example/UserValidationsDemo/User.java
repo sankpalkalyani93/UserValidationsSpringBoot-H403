@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+@PasswordMatch(message = "Password and ConfirmPassword must match")
 public class User {
 	
 	@NotNull(message = "Id is required")
@@ -25,13 +26,22 @@ public class User {
 	@PhoneNumber
 	private String phoneNumber;
 	
+	@NotBlank(message = "Password is required")
+	@Size(min = 8, message = "Password must be atleast 8 characters long")
+	private String password;
+	
+	@NotBlank(message = "Confirm password is required")
+	private String confirmPassword;
+	
 	public User() {}
-	public User(Integer id, String name, int age, String email, String phoneNumber) {
+	public User(Integer id, String name, int age, String email, String phoneNumber, String password, String confirmPassword) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+		this.password = password;
+		this.confirmPassword = confirmPassword;
 	}
 	public Integer getId() {
 		return id;
@@ -62,6 +72,18 @@ public class User {
 	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	} 
 	
 }
