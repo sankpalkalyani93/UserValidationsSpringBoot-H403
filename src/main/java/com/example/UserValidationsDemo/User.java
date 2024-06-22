@@ -22,12 +22,16 @@ public class User {
 	@Email(message = "Email should be valid")
 	private String email; 
 	
+	@PhoneNumber
+	private String phoneNumber;
+	
 	public User() {}
-	public User(Integer id, String name, int age, String email) {
+	public User(Integer id, String name, int age, String email, String phoneNumber) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.email = email;
+		this.phoneNumber = phoneNumber;
 	}
 	public Integer getId() {
 		return id;
@@ -52,6 +56,12 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	} 
 	
 }
